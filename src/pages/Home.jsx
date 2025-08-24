@@ -1,129 +1,50 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import {FaArrowRight} from "react-icons/fa"
-import HighlightText from '../components/core/HomePage/HighlightText'
-import CTAButton from '../components/core/HomePage/CTAButton'
-import CodeBlocks from '../components/core/HomePage/CodeBlocks'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function Home() {
+const Home = () => {
   return (
-    <div>
-        {/* Section-1 */}
-        <div className='relative mx-auto flex flex-col w-11/12 items-center text-white max-w-maxContent justify-between '>
-            <Link to={"/signup"}> 
-               <div className='group mt-16 p-1 mx-auto rounded-full bg-richblack-800 font-bold text-richblack-200 transition-all duration-200 hover:scale-95 w-fit'>
-                    <div className='flex flex-row items-center gap-2 rounded-full px-10 py-[5px] transition-all duration-200 group-hover:bg-richblack-900'>
-                        <p>Become an Instructor</p>
-                        <FaArrowRight/>
-                    </div>
-               </div>
+    <div className="min-h-screen bg-black text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="text-center">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+            Welcome to EduTech
+          </h1>
+          <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto">
+            Your learning platform is working! This is a test page to verify the frontend is rendering correctly.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              to="/signup"
+              className="bg-white text-black px-8 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors"
+            >
+              Get Started
             </Link>
-
-            <div className='text-center text-4xl font-semibold mt-7'>
-                Empower Your Future with
-                <HighlightText text={"Coding Skills"}/>
-            </div>
-
-            <div className='mt-4 w-[90%] text-center text-lg font-bold text-richblack-300 text-xl'>
-                With our online coding courses, you can learn at your own pace, from anywhere in the world, and get access to a wealth of resources, including hands-on projects, quizzes, and personalized feedback from instructors.
-            </div>
-
-            <div className='flex flex-row gap-7 mt-8'>
-                <CTAButton active={true} link={"/signup"}>Learn More</CTAButton>
-                <CTAButton active={false} link={"/login"}>Book a Demo</CTAButton>
-            </div>
-
-             <div className='mx-3 my-12 shadow-blue-200'>
-                {/* <video muted loop autoplay>
-                    <source src={} type="" />
-                </video> */}
-             </div>
-
-             {/* Code Block section 1*/}
-             <div>
-                <CodeBlocks 
-                    position={"lg:flex-row"}
-                    heading={
-                        <div className='text-4xl font-semibold'>
-                            Unlock your
-                        <HighlightText text={"Coding potential"}/>
-                        with our online course
-                        </div>
-                    }
-                    subheading={"Our courses are designed and taught by industry experts who have years of experience in coding and are passionate about sharing their knowledge with you."}
-                    ctabtn1={
-                        {
-                            btnText: "Try it Yourself",
-                            linkto: "/signup",
-                            active: true 
-                        }
-                    }
-                    ctabtn2={
-                        {
-                            btnText: "Learn More",
-                            linkto: "/login",
-                            active: false 
-                        }
-                    }
-                    codeblock={`<<!DOCTYPE html>\n<html>\n<head></<head>\n<title><Examples>\n<title><link rel="styles.css" href="styles.css">\n<body>\n<h1>\n<nav><ahref="/">Header</a>\n</nav>\n</h1>\n</body>\n</head>\n</html>>`}
-                    codeColor={"text-yellow-25"}
-                                
-                                
-                            
-                                
-                                
-                               
-                />
-             </div>
-
-             {/* Code Block section 1*/}
-             <div>
-                <CodeBlocks 
-                    position={"lg:flex-row-reverse"}
-                    heading={
-                        <div className='text-4xl font-semibold'>
-                            Start
-                        <HighlightText text={"coding in seconds"}/>
-                        
-                        </div>
-                    }
-                    subheading={"Go ahead, give it a try. Our hands-on learning environment means you'll be writing real code from your very first"}
-                    ctabtn1={
-                        {
-                            btnText: "Continue Learning",
-                            linkto: "/signup",
-                            active: true 
-                        }
-                    }
-                    ctabtn2={
-                        {
-                            btnText: "Learn More",
-                            linkto: "/login",
-                            active: false 
-                        }
-                    }
-                    codeblock={`<<!DOCTYPE html>\n<html>\n<head></<head>\n<title><Examples>\n<title><link rel="styles.css" href="styles.css">\n<body>\n<h1>\n<nav><ahref="/">Header</a>\n</nav>\n</h1>\n</body>\n</head>\n</html>>`}
-                    codeColor={"text-yellow-25"}
-                                
-                                
-                            
-                                
-                                
-                               
-                />
-             </div>
+            <Link
+              to="/courses"
+              className="border border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-black transition-colors"
+            >
+              Browse Courses
+            </Link>
+          </div>
+        </div>
+        
+        <div className="mt-16 text-center">
+          <h2 className="text-3xl font-bold mb-4">Backend Status</h2>
+          <p className="text-gray-400">Check if the backend is connected:</p>
+          <div className="mt-4">
+            <a 
+              href="http://localhost:4000" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:text-blue-300"
+            >
+              http://localhost:4000
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
+  );
+};
 
-
-
-
-        {/* Section-2 */}
-
-        {/* Section-3 */}
-
-        {/* Footer */}
-    </div>
-  )
-}
-
-export default Home
+export default Home;

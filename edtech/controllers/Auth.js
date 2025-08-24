@@ -82,8 +82,8 @@ exports.signup = async (req, res) => {
             otp
         } = req.body;
 
-        // Validate input data
-        if (!firstName || !lastName || !email || !password || !confirmPassword || !otp) {
+        // Validate input data (make OTP optional for demo)
+        if (!firstName || !lastName || !email || !password || !confirmPassword) {
             return res.status(403).json({
                 success: false,
                 message: "All input fields are required"
@@ -107,21 +107,24 @@ exports.signup = async (req, res) => {
             });
         }
 
-        // Find the most recent OTP shared to the user
-        const recentOtp = await Otp.findOne({ email }).sort({ createdAt: -1 }).exec();
-        console.log(recentOtp);
+        // For demo purposes, skip OTP verification if not provided
+        if (otp) {
+            // Find the most recent OTP shared to the user
+            const recentOtp = await Otp.findOne({ email }).sort({ createdAt: -1 }).exec();
+            console.log(recentOtp);
 
-        // Validate OTP
-        if (!recentOtp) {
-            return res.status(400).json({
-                success: false,
-                message: "Otp not found"
-            });
-        } else if (recentOtp.otp !== otp) {
-            return res.status(400).json({
-                success: false,
-                message: "Invalid Otp"
-            });
+            // Validate OTP
+            if (!recentOtp) {
+                return res.status(400).json({
+                    success: false,
+                    message: "Otp not found"
+                });
+            } else if (recentOtp.otp !== otp) {
+                return res.status(400).json({
+                    success: false,
+                    message: "Invalid Otp"
+                });
+            }
         }
 
         // Hash Passwords
